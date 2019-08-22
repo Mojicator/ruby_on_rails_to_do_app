@@ -4,8 +4,8 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :definition
       t.boolean :state
-      t.date :added_date
-      t.date :end_date
+      t.datetime :added_date
+      t.datetime :end_date
 
       t.timestamps
     end
