@@ -1,4 +1,4 @@
-<%= form_for @list, url: 'lists/create', method: 'POST' do |f| %>
+<%= form_for @list, action: :create do |f| %>
     <p>
         <%= f.label :title %>
         <%= f.text_field :title %><br />

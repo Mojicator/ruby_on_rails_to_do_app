@@ -5,9 +5,9 @@
                 <h4><%= list.title %></h4>
                 <div>
                     <p><%= list.description %></p>
-                    <%= link_to 'Edit', lists_edit_path(list), method: :put%>
+                    <%= link_to 'Edit', edit_list_path(list) %>
                     <%= link_to 'Delete', list, method: :delete, data: { confirm: 'Are you sure?' } %>
-                    <p>ver</p>
+                    <%= link_to 'Tasks', list %>
                 </div>
             </div>
         <% end %>

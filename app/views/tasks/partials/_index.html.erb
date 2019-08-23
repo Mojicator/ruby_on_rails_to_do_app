@@ -1,9 +1,6 @@
 <h1><%= @list.title %></h1>
-<h3><%= @list.description %></h3>
-<div>
-    <!-- <h4>Add new a task</h4> -->
-    <%= link_to 'Add task', new_list_task_path(@list) %>
-</div>
+<h4><%= @list.description %></h4>
+<div><%= render 'tasks/partials/new' %></div>
 <div>
     <% if @list.tasks %>
         <% @list.tasks.each do |task| %>

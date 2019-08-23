@@ -2,10 +2,10 @@
 
 # Lists Controller
 class ListsController < ApplicationController
-  before_action :set_list, only: %i[show edit update destroy]
+  before_action :find_list, only: %i[show edit update destroy]
   before_action :authenticate_user!
   def index
-    # @user = current_user
+    # @task = Task.new
   end
 
   def new
@@ -42,6 +42,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    @task = Task.new
   end
 
   def destroy
@@ -54,7 +55,7 @@ class ListsController < ApplicationController
 
   private
 
-  def set_list
+  def find_list
     @list = List.find(params[:format] || params[:id])
   end
 
