@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    redirect_to users_index_path if current_user
+    @user = current_user
+    @list = List.new
   end
 end

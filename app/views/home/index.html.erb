@@ -1,6 +1,23 @@
 <h1>To Do</h1>
 <% if user_signed_in? %>
-    Sesion ya iniciada!
+    <div>
+        <% if @user.photo.attached? %>
+            <!-- <image src="<%= (url_for(@user.photo)) %>"/> -->
+        <% end %>
+    </div>
+    <h1>Welcome! <%= @user.first_name + ' ' + @user.last_name %></h1>
+    <h3><%= @user.email %></h3>
+    <p>
+        <%= link_to 'Exit', destroy_user_session_path, method: :delete %>
+        <%= link_to 'Edit', edit_user_registration_path %>
+    </p>
+    <div>
+        <p><%= link_to 'New list', new_list_path %></p>
+        <%= render 'lists/partials/new' %>
+    </div>
+    <div>
+        <%= render 'lists/partials/index' %>
+    </div>
 <% else %>
     <%= render new_user_session_path %>
     <%= render "devise/shared/links" %>

@@ -1,0 +1,13 @@
+<%= form_for @list, url: 'lists/create', method: 'POST' do |f| %>
+    <p>
+        <%= f.label :title %>
+        <%= f.text_field :title %><br />
+    </p>
+    <p>
+        <%= f.label :description %>
+        <%= f.text_area :description %><br />
+    </p>
+    <div class="actions">
+        <%= f.submit "Create" %>
+    </div>
+<% end %>

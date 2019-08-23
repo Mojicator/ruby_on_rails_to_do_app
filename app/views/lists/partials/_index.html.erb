@@ -1,0 +1,17 @@
+<div>
+    <% if current_user.lists %>
+        <% current_user.lists.each do |list| %>
+            <div>
+                <h4><%= list.title %></h4>
+                <div>
+                    <p><%= list.description %></p>
+                    <%= link_to 'Edit', lists_edit_path(list), method: :put%>
+                    <%= link_to 'Delete', list, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <p>ver</p>
+                </div>
+            </div>
+        <% end %>
+    <% else %>
+    <p>Nothing</p>
+    <% end %>
+</div>
