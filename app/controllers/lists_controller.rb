@@ -10,6 +10,7 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    # @task = Task.new
   end
 
   def edit

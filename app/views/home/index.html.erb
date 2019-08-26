@@ -2,7 +2,7 @@
 <% if user_signed_in? %>
     <div>
         <% if @user.photo.attached? %>
-            <!-- <image src="<%= (url_for(@user.photo)) %>"/> -->
+            <image src="<%= (url_for(@user.photo)) %>"/>
         <% end %>
     </div>
     <h1>Welcome! <%= @user.first_name + ' ' + @user.last_name %></h1>

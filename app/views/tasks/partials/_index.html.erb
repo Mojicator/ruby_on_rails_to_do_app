@@ -5,8 +5,8 @@
     <% if @list.tasks %>
         <% @list.tasks.each do |task| %>
             <div>
-                <h5>task.title</h5>
-                <p>task.definition</p>
+                <h5><%= task.title %></h5>
+                <p><%= task.definition %></p>
                 <p>editar | eliminar</p>
             </div>
         <% end %>    

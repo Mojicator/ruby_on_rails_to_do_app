@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2019_08_23_002437) do
   create_table "lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.date "created_date"
-    t.date "end_date"
+    t.datetime "created_date"
+    t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 2019_08_23_002437) do
     t.string "title"
     t.text "definition"
     t.boolean "state"
-    t.date "added_date"
-    t.date "end_date"
+    t.datetime "added_date"
+    t.datetime "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "list_id"

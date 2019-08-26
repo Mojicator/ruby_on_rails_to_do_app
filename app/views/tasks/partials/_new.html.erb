@@ -1,4 +1,4 @@
-<%= form_for @task, action: :create do |f| %>
+<%= form_for @task, url: list_tasks_path do |f| %>
     <p> 
         <%= f.label :title %>
         <%= f.text_field :title %><br />

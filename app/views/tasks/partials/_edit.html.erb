@@ -1,0 +1,18 @@
+<%= form_for [@list,@task], action: :update do |f| %>
+<p>caca</p>
+    <p> 
+        <%= f.label :title %>
+        <%= f.text_field :title %><br />
+    </p>
+    <p>
+        <%= f.label :definition %>
+        <%= f.text_area :definition %>
+    </p>
+    <p>
+        <%= f.label :state %>
+        <%= f.check_box :state %>
+    </p>
+    <div class="actions">
+        <%= f.submit 'Ok' %>
+    </div>
+<% end %>
