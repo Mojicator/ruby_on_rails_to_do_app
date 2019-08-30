@@ -43,7 +43,11 @@ class ListsController < ApplicationController
   end
 
   def show
-    @task = Task.new
+    respond_to do |format|
+      format.html
+      format.csv { send_data @list.tasks.to_csv(%w[title definition state]) }
+      # format.csv { send_data @list.tasks.to_csv }
+    end
   end
 
   def destroy
@@ -57,7 +61,8 @@ class ListsController < ApplicationController
   private
 
   def find_list
-    @list = List.find(params[:format] || params[:id])
+    # @list = List.find(params[:format] || params[:id])
+    @list = List.find(params[:id])
   end
 
   def list_params
