@@ -10,8 +10,58 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "font-awesome";
+
+ .imagen {
+     width: 10em;
+     height: 10em;
+     margin: 5%;
+     border-radius: 50%;
+ }
+ 
+ /* TODO: revisar estilos*/
+ .main_col {
+     background-color: #2B5797;
+     background-image: url("https://www.transparenttextures.com/patterns/shattered.png");
+     text-align: center;
+     position: fixed;
+     display: block;
+     float: left;
+     height: 100%;
+     z-index: 1000;
+     color: white;
+ }
+
+ .content {
+     position: relative;
+     left: 16%;
+     padding: 0.5%;
+     margin: 1%;
+ }
+
+ .font_button {
+     font-size: 20px;
+     color: white;
+     border: none;
+ }
+
+ .font_button_list {
+    font-size: 15px;
+    color: white;
+    border: none;
+ }
+
+ .area {
+     padding: 1%;
+     margin-top: 1%;
+     /* margin-left: 0.5%; */
+     border: 2px solid rgb(62, 159, 223);
+ }
+
+ 
