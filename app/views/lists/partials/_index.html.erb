@@ -1,17 +1,45 @@
-<div>
-    <% if current_user.lists %>
-        <% current_user.lists.each do |list| %>
-            <div>
-                <h4><%= list.title %></h4>
-                <div>
-                    <p><%= list.description %></p>
-                    <%= link_to 'Edit', edit_list_path(list) %>
-                    <%= link_to 'Delete', list, method: :delete, data: { confirm: 'Are you sure?' } %>
-                    <%= link_to 'Tasks', list %>
-                </div>
-            </div>
-        <% end %>
-    <% else %>
-    <p>Nothing</p>
-    <% end %>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-5">
+            <!-- TODO: formulario para nueva lista -->
+            <%= link_to new_list_path, title: 'Create a new list' do %>
+                <%= fa_icon "plus" %>
+                <span>Add a new list</span>
+            <% end %>
+            <ul class="list-group list-group-flush">
+            <% if current_user.lists.length > 0 %>
+                <% current_user.lists.each do |list| %>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col">
+                                <h5><%= list.title %></h5>
+                            </div>
+                            <div class="btn-group col" role="group">
+                                <%= link_to list, class: 'btn btn-info font_button_list',
+                                    title: 'Show tasks' do %>
+                                    <%= fa_icon "list" %>
+                                    <span class="badge"><%= list.tasks.length %></span>
+                                <% end %>
+                                <%= link_to edit_list_path(list), class: 'btn btn-info font_button_list',
+                                    title: 'Edit list' do %>
+                                    <%= fa_icon "edit" %>
+                                <% end %>
+                                <%= link_to list, method: :delete, data: { confirm: 'Are you sure?' },
+                                    title: 'Delete list', class: 'btn btn-danger font_button_list' do %>
+                                    <%= fa_icon "trash" %>
+                                <% end %>
+                                <!-- <%= link_to 'Edit', edit_list_path(list) %>
+                                <%= link_to 'Delete', list, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                <%= link_to 'Tasks', list %> -->
+                            </div>
+                        </div>
+                        <small><em><%= list.description %></em></small>
+                    </li>
+                <% end %>
+            <% else %>
+                <h2>Nothing to do</h2>
+            <% end %>
+            </ul>
+        </div>
+    </div>
 </div>

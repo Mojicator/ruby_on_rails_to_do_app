@@ -1,20 +1,71 @@
-<h1><%= @list.title %></h1>
-<h3><%= @list.description %></h3>
-<div>
-    <%= link_to 'Add task', new_list_task_path(@list) %>
-</div>
-<div>
-    <% if @list.tasks %>
-        <% @list.tasks.each do |task| %>
-            <div>
-                <h5><%= task.title %></h5>
-                <p><%= task.definition %></p>
-                <p>Status</p>
-                <%= link_to 'Delete', [@list, task], method: :delete, data: { confirm: 'Are you sure?' } %>
-                <%= link_to 'Edit', edit_list_task_path(@list, task) %>
-            </div>
-        <% end %>    
-    <% else %>
-    <p>None tasks</p>
-    <% end %>
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col-sm-3">
+            <h3><%= @list.title %></h3>
+        </div>
+        <div class="col">
+            <%= link_to new_list_task_path(@list), class: 'btn btn-success',
+                title: 'Add a new task' do %>
+                <%= fa_icon "plus" %>
+                <span>Add a new task</span>
+            <% end %>
+            <!-- <%= link_to 'Add task', new_list_task_path(@list) %> -->
+            <!-- TODO: metodos para csv y pdf-->
+            <%= link_to list_path(@list, format: 'csv'), class: 'btn btn-info font_button_list',
+                title: 'Export list to CSV' do %>
+                <%= fa_icon "file" %>
+                <span>CSV</span>
+            <% end %>
+            <%= link_to '#por definir', class: 'btn btn-info font_button_list',
+                title: 'Export list to PDF' do %>
+                <%= fa_icon "file" %>
+                <span>PDF</span>
+            <% end %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h6><%= @list.description %></h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <ul class="list-group list-group-flush">
+                <% if @list.tasks.length > 0 %>
+                    <% @list.tasks.each do |task| %>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col">
+                                    <h5><%= task.title %></h5>
+                                </div>
+                                <div class="btn-group col" role="group">
+                                    <!-- <p><%= task.state %></p> -->
+                                    <% if task.state %>
+                                        <%= fa_icon "check", class: 'btn btn-outline-success', title: 'Completed' %>
+                                    <% else %>
+                                        <%= fa_icon "times", class: 'btn btn-outline-warning', title: 'Incomplete' %>
+                                    <% end %>
+                                    <%= link_to edit_list_task_path(@list, task), class: 'btn btn-info font_button_list',
+                                        title: 'Edit task' do %>
+                                        <%= fa_icon "edit" %>
+                                    <% end %>                            
+                                    <%= link_to [@list, task], method: :delete, data: { confirm: 'Are you sure?' },
+                                        title: 'Delete task', class: 'btn btn-danger font_button_list' do %>
+                                        <%= fa_icon "trash" %>
+                                    <% end %>
+                                    <!-- <%= link_to 'Delete', [@list, task], method: :delete, data: { confirm: 'Are you sure?' } %>
+                                    <%= link_to 'Edit', edit_list_task_path(@list, task) %> -->
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p><%= task.definition %></p>
+                            </div>
+                        </li>
+                    <% end %>    
+                <% else %>
+                    <p><h1>None tasks</h1></p>
+                <% end %>
+            </ul>
+        </div>
+    </div>
 </div>
