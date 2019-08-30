@@ -1,26 +1,28 @@
-<h1>To Do</h1>
-<% if user_signed_in? %>
-    <div>
-        <% if @user.photo.attached? %>
-            <image src="<%= (url_for(@user.photo)) %>"/>
-        <% end %>
+<div class="container-fluid">
+    <div class="row">
+        <!-- <h1>To Do</h1> -->
     </div>
-    <h1>Welcome! <%= @user.first_name + ' ' + @user.last_name %></h1>
-    <h3><%= @user.email %></h3>
-    <p>
-        <%= link_to 'Exit', destroy_user_session_path, method: :delete %>
-        <%= link_to 'Edit', edit_user_registration_path %>
-    </p>
-    <div>
-        <p><%= link_to 'New list', new_list_path %></p>
-        <%= render 'lists/partials/new' %>
-    </div>
-    <div>
-        <h4>To Do lists</h4>
-        <%= render 'lists/partials/index' %>
-    </div>
-<% else %>
-    <%= render new_user_session_path %>
-    <%= render "devise/shared/links" %>
-    <%= render new_user_registration_path %>
-<% end %>
+    <% if !user_signed_in? %>
+        <!-- Login -->
+        <div class="container">
+            <!-- <%= image_tag "icon3.png" %> -->
+            <div class="card text-center">
+                <!-- <%= image_tag "icon2.jpg", class: "card-img-top", alt: "ToDoIcon" %> -->
+                <!-- <img class="card-img-top" src="" alt=""> -->
+                <div class="card-body">
+                    <%= render new_user_session_path %>
+                    <%= render "devise/shared/links" %>
+                    <%= link_to 'Create an account free', new_user_registration_path %>
+                    <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#contentId" aria-expanded="false"
+                            aria-controls="contentId">
+                        Show
+                    </button>
+                    <div class="collapse" id="contentId">
+                        <%= render new_user_registration_path %>
+                    </div> -->
+                
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

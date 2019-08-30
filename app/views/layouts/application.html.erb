@@ -4,14 +4,53 @@
     <title>ToDo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <!-- TODO: Agregar estilo a las barras de estado -->
+    <!-- <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
+    <% if user_signed_in? %>
+      <div class="row">
+        <div class="col-sm-2 main_col">
+            <% if current_user.photo.attached? %>
+                <image src="<%= (url_for(current_user.photo)) %>" class="imagen"/>
+            <% end %>
+            <h2><%= current_user.first_name + ' ' + current_user.last_name %></h2>
+            <hr>
+            <em><%= current_user.email %></em>
+            <hr>
+            <p>
+                <div class="btn-group" role="group">
+                    <%= link_to destroy_user_session_path, class: 'btn btn-danger font_button',
+                        title: 'Sign out', method: :delete do %>
+                        <%= fa_icon "sign-out" %>
+                    <% end %>
+                    
+                    <%= link_to edit_user_registration_path, class: 'btn btn-info font_button',
+                        title: 'Edit user' do %>
+                        <%= fa_icon "edit" %>
+                    <% end %>
+                </div>
+                <!-- <%= link_to 'Exit', destroy_user_session_path, method: :delete %> -->
+                <!-- <%= link_to 'Edit', edit_user_registration_path %> -->
+            </p>
+        </div>
+        <div class="col content">
+            <!-- FIXME: es correcto mostrar las listas aqui? -->
+            <!-- FIXME: acomodar estilo -->
+            <div>
+                <%= render 'lists/partials/index' %>
+            </div>
+        </div>
+      </div>
+    <% end %>
     <%= yield %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
