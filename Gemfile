@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.0'
 
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+# The font-awesome font bundled as an asset for the rails asset pipeline
+gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 # Provides jQuery and the jQuery-ujs driver for your Rails 4+ application.
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 # Sass-powered version of Bootstrap 3, ready to drop right into your Sass powered applications.
