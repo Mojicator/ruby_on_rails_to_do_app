@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     @task = @list.tasks.new(task_params)
     respond_to do |format|
       if @task.save
-        format.html { redirect_to root_path, notice: 'Task was successfully created' }
+        format.html { redirect_to @list, notice: 'Task was successfully created' }
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: 'new', notice: 'Something went wrong' }
@@ -31,7 +31,7 @@ class TasksController < ApplicationController
     @task = @list.tasks.find(params[:id])
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to root_path, notice: 'Task was successfully updated' }
+        format.html { redirect_to @list, notice: 'Task was successfully updated' }
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: 'edit', notice: 'Something went wrong' }
@@ -52,6 +52,7 @@ class TasksController < ApplicationController
   private
 
   def find_list
+    # @user = current_user
     @list = List.find(params[:list_id])
   end
 
