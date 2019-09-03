@@ -2,7 +2,7 @@
 
 # Tasks Controller
 class TasksController < ApplicationController
-  before_action :find_list, only: %i[index show create edit update destroy]
+  before_action :find_list, only: %i[index new show create edit update destroy]
   def index
   end
 
@@ -52,7 +52,6 @@ class TasksController < ApplicationController
   private
 
   def find_list
-    # @user = current_user
     @list = List.find(params[:list_id])
   end
 

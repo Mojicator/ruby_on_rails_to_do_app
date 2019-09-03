@@ -1,17 +1,35 @@
-<%= form_for @task, url: list_tasks_path do |f| %>
-    <p> 
-        <%= f.label :title %>
-        <%= f.text_field :title %><br />
-    </p>
-    <p>
-        <%= f.label :definition %>
-        <%= f.text_area :definition %>
-    </p>
-    <p>
-        <%= f.label :state %>
-        <%= f.check_box :state %>
-    </p>
-    <div class="actions">
-        <%= f.submit 'Add' %>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h2>New task for <%= @list.title %></h2>
+        </div>
     </div>
-<% end %>
+    <div class="container">
+        <%= form_for @task, url: list_tasks_path do |f| %>
+            <div class="form-group row">
+                <%= f.label :title, class: 'col-sm-2 col-form-label' %>
+                <div class="col-sm-7">
+                    <%= f.text_field :title, class: 'form-control form-control-sm', required: true %>
+                </div>
+            </div>
+            <div class="form-group row">
+                <%= f.label :definition, class: 'col-sm-2 col-form-label' %>
+                <div class="col-sm-7">
+                    <%= f.text_area :definition, class: 'form-control form-control-sm', placeholder: 'Type something...' %>
+                    <small class="form-text text-muted">Optional</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <%= f.label 'Done?', class: 'col-sm-2 col-form-label' %>
+                <div class="col-sm-1">
+                    <%= f.check_box :state, class: 'form-control form-control-sm' %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-9">
+                    <%= f.submit "Update", class: 'btn btn-success btn-block', title: 'Save changes' %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
