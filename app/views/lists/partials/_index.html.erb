@@ -1,8 +1,7 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-5">
-            <!-- TODO: formulario para nueva lista -->
-            <%= link_to new_list_path, title: 'Create a new list' do %>
+        <div class="col">
+            <%= link_to new_list_path, title: 'Create a new list', class: 'btn btn-outline-success btn-block' do %>
                 <%= fa_icon "plus" %>
                 <span>Add a new list</span>
             <% end %>
@@ -15,17 +14,17 @@
                                 <h5><%= list.title %></h5>
                             </div>
                             <div class="btn-group col" role="group">
-                                <%= link_to list, class: 'btn btn-info font_button_list',
+                                <%= link_to list, class: 'btn btn-info',
                                     title: 'Show tasks' do %>
                                     <%= fa_icon "list" %>
                                     <span class="badge"><%= list.tasks.length %></span>
                                 <% end %>
-                                <%= link_to edit_list_path(list), class: 'btn btn-info font_button_list',
+                                <%= link_to edit_list_path(list), class: 'btn btn-info',
                                     title: 'Edit list' do %>
                                     <%= fa_icon "edit" %>
                                 <% end %>
                                 <%= link_to list, method: :delete, data: { confirm: 'Are you sure?' },
-                                    title: 'Delete list', class: 'btn btn-danger font_button_list' do %>
+                                    title: 'Delete list', class: 'btn btn-danger' do %>
                                     <%= fa_icon "trash" %>
                                 <% end %>
                                 <!-- <%= link_to 'Edit', edit_list_path(list) %>

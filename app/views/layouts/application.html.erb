@@ -14,38 +14,34 @@
     <!-- <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
     <% if user_signed_in? %>
-      <div class="row">
-        <div class="col-sm-2 main_col">
-            <% if current_user.photo.attached? %>
-                <image src="<%= (url_for(current_user.photo)) %>" class="imagen"/>
-            <% end %>
-            <h2><%= current_user.first_name + ' ' + current_user.last_name %></h2>
+      <div class="main-col">
+        <div class="card">
+          <% if current_user.photo.attached? %>
+              <image src="<%= (url_for(current_user.photo)) %>" class="card-img-top user-img"/>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= current_user.first_name + ' ' + current_user.last_name %></h5>
+            <span><small><%= current_user.email %></small></span>
             <hr>
-            <em><%= current_user.email %></em>
-            <hr>
-            <p>
-                <div class="btn-group" role="group">
-                    <%= link_to destroy_user_session_path, class: 'btn btn-danger font_button',
-                        title: 'Sign out', method: :delete do %>
-                        <%= fa_icon "sign-out" %>
-                    <% end %>
-                    
-                    <%= link_to edit_user_registration_path, class: 'btn btn-info font_button',
-                        title: 'Edit user' do %>
-                        <%= fa_icon "edit" %>
-                    <% end %>
-                </div>
-                <!-- <%= link_to 'Exit', destroy_user_session_path, method: :delete %> -->
-                <!-- <%= link_to 'Edit', edit_user_registration_path %> -->
+            <p class="card-text">
+              <%= current_user.description %>
             </p>
+          </div>
+          <div class="btn-group" role="group">
+            <%= link_to destroy_user_session_path, class: 'btn btn-danger font_button',
+                title: 'Sign out', method: :delete do %>
+                <%= fa_icon "sign-out" %>
+            <% end %>
+            
+            <%= link_to edit_user_registration_path, class: 'btn btn-info font_button',
+                title: 'Edit user' do %>
+                <%= fa_icon "edit" %>
+            <% end %>
+          </div>
         </div>
-        <div class="col content">
-            <!-- FIXME: es correcto mostrar las listas aqui? -->
-            <!-- FIXME: acomodar estilo -->
-            <div>
-                <%= render 'lists/partials/index' %>
-            </div>
-        </div>
+      </div>
+      <div class="lists">
+        <%= render 'lists/partials/index' %>
       </div>
     <% end %>
     <%= yield %>

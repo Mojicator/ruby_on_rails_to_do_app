@@ -46,6 +46,7 @@ class ListsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data @list.tasks.to_csv(%w[title definition state]) }
+      format.pdf { render template: 'tasks/tasklist', pdf: 'Tasks', page_size: 'Letter' }
       # format.csv { send_data @list.tasks.to_csv }
     end
   end

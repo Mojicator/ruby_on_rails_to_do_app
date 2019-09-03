@@ -2,7 +2,7 @@
 
 # Tasks Controller
 class TasksController < ApplicationController
-  before_action :find_list, only: %i[index create edit update destroy]
+  before_action :find_list, only: %i[index show create edit update destroy]
   def index
   end
 
@@ -46,7 +46,7 @@ class TasksController < ApplicationController
   def destroy
     @task = @list.tasks.find(params[:id])
     @task.destroy
-    redirect_to root_path
+    redirect_to @list
   end
 
   private

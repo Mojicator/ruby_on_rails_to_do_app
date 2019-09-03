@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>todo list</title>
+        <%= wicked_pdf_stylesheet_link_tag 'pdf' %>
+    </head>
+    <body>
+        <div>
+            <h1><%= @list.title %></h1>
+            <p><%= @list.description %></p>
+            <table>
+                <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Definition</th>
+                    <th scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% @list.tasks.each do |task| %>
+                        <tr>
+                            <td scope="row"><%= task.title %></td>
+                            <td><%= task.definition %></td>
+                            <% if task.state%>
+                                <td>Completed</td>
+                            <% else %>
+                                <td>Incomplete</td>
+                            <% end %>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </body>
+    <footer>
+    </footer>
+</html>

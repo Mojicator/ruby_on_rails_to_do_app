@@ -1,13 +1,31 @@
-<%= form_for @list, action: :update do |f| %>
-    <p>
-        <%= f.label :title %>
-        <%= f.text_field :title %><br />
-    </p>
-    <p>
-        <%= f.label :description %>
-        <%= f.text_area :description %><br />
-    </p>
-    <div class="actions">
-        <%= f.submit "OK" %>
+<div class="container-fluid edit-form">
+    <div class="row">
+        <div class="col">
+            <h2>Edit list</h2>
+        </div>
     </div>
-<% end %>
+    <div class="container">
+        <%= form_for @list, action: :update do |f| %>
+        <div class="form-group row">
+            <%= f.label :title, class: 'col-sm-2 col-form-label' %>
+            <div class="col-sm-7">
+                <%= f.text_field :title, class: 'form-control form-control-sm' %>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <%= f.label :description, class: 'col-sm-2 col-form-label' %>
+            <div class="col-sm-7">
+                <%= f.text_area :description, class: 'form-control form-control-sm' %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-9">
+                <%= f.submit "Update", class: 'btn btn-success btn-block', title: 'Save changes' %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
+
