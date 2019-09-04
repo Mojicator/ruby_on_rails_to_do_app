@@ -16,6 +16,7 @@
     <% if user_signed_in? %>
       <div class="main-col">
         <div class="card">
+          <!-- TODO: default user image -->
           <% if current_user.photo.attached? %>
               <image src="<%= (url_for(current_user.photo)) %>" class="card-img-top user-img"/>
           <% end %>
