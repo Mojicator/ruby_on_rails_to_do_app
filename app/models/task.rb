@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
+# Task Model
 class Task < ApplicationRecord
+  validates :title, :definition, presence: true
   belongs_to :list
 
   def self.to_csv(fields = column_names)
