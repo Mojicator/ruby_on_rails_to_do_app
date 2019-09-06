@@ -16,7 +16,6 @@
                 <%= f.label :definition, class: 'col-sm-2 col-form-label' %>
                 <div class="col-sm-7">
                     <%= f.text_area :definition, class: 'form-control form-control-sm', placeholder: 'Type something...' %>
-                    <small class="form-text text-muted">Optional</small>
                 </div>
             </div>
             <div class="form-group row">
@@ -27,7 +26,7 @@
             </div>
             <div class="row">
                 <div class="col-9">
-                    <%= f.submit "Update", class: 'btn btn-success btn-block', title: 'Save changes' %>
+                    <%= f.submit "Add task", class: 'btn btn-success btn-block', title: 'Save changes' %>
                 </div>
             </div>
         <% end %>

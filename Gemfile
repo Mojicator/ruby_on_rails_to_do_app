@@ -71,6 +71,7 @@ end
 group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   # gem 'chromedriver-helper'
+  # gem 'warden-rspec-rails', '~> 0.2.0'
   # Rspec testing
   gem 'database_cleaner', '~> 1.7'
   # Fake data generator

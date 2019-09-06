@@ -4,27 +4,25 @@
 class ListsController < ApplicationController
   before_action :find_list, only: %i[show edit update destroy]
   before_action :authenticate_user!
-  def index
-    # @task = Task.new
-  end
+  def index; end
 
   def new
     @list = List.new
     # @task = Task.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @list = current_user.lists.new(list_params)
+    # raise @list.to_yaml
     @list.created_date = Time.now
     respond_to do |format|
       if @list.save
         format.html { redirect_to root_path, notice: 'List was successfully created' }
         format.json { render json: @list, status: :created, location: @list }
       else
-        format.html { render action: 'new', notice: 'Something went wrong' }
+        format.html { redirect_to new_list_path, alert: 'List was not valid, try again' }
         format.json { render json: @list.errors, status: :unprocessable_entity }
       end
     end
@@ -36,7 +34,7 @@ class ListsController < ApplicationController
         format.html { redirect_to root_path, notice: 'List was successfully updated' }
         format.json { render json: @list, status: :created, location: @list }
       else
-        format.html { render action: 'edit', notice: 'Something went wrong' }
+        format.html { redirect_to edit_list_path(@list), alert: 'List was not valid, try again' }
         format.json { render json: @list.errors, status: :unprocessable_entity }
       end
     end

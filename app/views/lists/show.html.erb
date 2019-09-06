@@ -66,7 +66,7 @@
                                             <%= fa_icon "edit" %>
                                         <% end %>                            
                                         <%= link_to [@list, task], method: :delete, data: { confirm: 'Are you sure?' },
-                                            title: 'Delete task', class: 'btn btn-danger font_button_list' do %>
+                                            title: 'Delete task', id: "del-task#{task.id}", class: 'btn btn-danger font_button_list' do %>
                                             <%= fa_icon "trash" %>
                                         <% end %>
                                     </div>

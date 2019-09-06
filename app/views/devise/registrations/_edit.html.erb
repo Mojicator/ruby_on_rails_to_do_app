@@ -52,21 +52,21 @@
 
       <div class="form-group row">
         <%= f.label 'First name', class: 'col-sm-3 col-form-label' %>
-        <div class="col-7">
+        <div class="col-3">
           <%= f.text_field :first_name, class: 'form-control form-control-sm', autofocus: true, required: true%>
         </div>
       </div>
 
       <div class="form-group row">
         <%= f.label 'Last name', class: 'col-sm-3 col-form-label' %>
-        <div class="col-7">
+        <div class="col-3">
           <%= f.text_field :last_name, class: 'form-control form-control-sm', required: true %>
         </div>
       </div>
 
       <div class="form-group row">
         <%= f.label 'Description', class: 'col-sm-3 col-form-label' %>
-        <div class="col-7">
+        <div class="col-3">
             <%= f.text_area :description, class: 'form-control form-control-sm' %>
         </div>
       </div>
@@ -78,7 +78,7 @@
       <i>(leave blank if you don't want to change it)</i>
       <div class="form-group row">
         <%= f.label :password, class: 'col-sm-3 col-form-label' %>
-        <div class="col-7">
+        <div class="col-3">
           <%= f.password_field :password, class: 'form-control form-control-sm', autocomplete: "new-password" %>
           <% if @minimum_password_length %>
             <small class="form-text text-muted"><%= @minimum_password_length %> characters minimum</small>
@@ -88,7 +88,7 @@
   
       <div class="form-group row">
         <%= f.label :password_confirmation, class: 'col-sm-3 col-form-label' %>
-        <div class="col-7">
+        <div class="col-3">
           <%= f.password_field :password_confirmation, class: 'form-control form-control-sm', autocomplete: "new-password" %>
         </div>
       </div>
@@ -96,13 +96,13 @@
       <i>(we need your current password to confirm your changes)</i>
       <div class="form-group row">
         <%= f.label :current_password, class: 'col-sm-3 col-form-label' %>
-        <div class="col-7">
+        <div class="col-3">
           <%= f.password_field :current_password, class: 'form-control form-control-sm', autocomplete: "current-password", required: true %>
         </div>
       </div>
     
       <div class="row">
-        <div class="col-10">
+        <div class="col-6">
           <%= f.submit "Update", class: 'btn btn-success btn-block', title: 'Save changes' %>
         </div>
       </div>
